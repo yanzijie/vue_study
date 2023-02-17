@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue3.js"></script>
+</head>
+<body>
+    <div id="counter">
+<!--        使用配置对象数据-->
+        <p>{{num}}</p>
+        <p>{{name}}</p>
+    </div>
+    <script>
+        // 设置配置对象
+        const Counter = {
+            // vue中，data里面存放数据, 名字固定就叫 data
+            data:function() {
+                return {
+                    num: 0,
+                    name: "zhangsan"
+                }
+            }
+        }
+        // vue创建应用, 解析配置对象
+        // mount() 让div元素和vue对象关联
+        // 返回得到 vue的代理对象
+        let app = Vue.createApp(Counter).mount('#counter')
+        // 看看 vue的代理对象
+        console.log(app)
+    </script>
+</body>
+</html>
