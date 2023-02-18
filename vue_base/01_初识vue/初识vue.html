@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="vue3.js"></script>
+<!--    使用.js文件方式引入-->
+    <script type="text/javascript" src="../js/vue3.js"></script>
 </head>
 <body>
     <div id="counter">
 <!--        使用配置对象数据-->
+<!--        挂载了这个div，这个div中才可以使用vue语法-->
         <p>{{num}}</p>
         <p>{{name}}</p>
+        <p>{{student}}</p>
     </div>
     <script>
         // 设置配置对象
@@ -18,12 +21,16 @@
             data:function() {
                 return {
                     num: 0,
-                    name: "zhangsan"
+                    name: "zhangsan",
+                    student:{
+                        name:"lll",
+                        age:19
+                    }
                 }
             }
         }
         // vue创建应用, 解析配置对象
-        // mount() 让div元素和vue对象关联
+        // mount() 让div元素和vue对象关联, 挂载了这个div，这个div中才可以使用vue语法
         // 返回得到 vue的代理对象
         let app = Vue.createApp(Counter).mount('#counter')
         // 看看 vue的代理对象
