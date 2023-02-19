@@ -32,20 +32,20 @@
         <h1>指令语法</h1>
         <a v-bind:href="school.url">点我去{{school.name}}</a>
     </div>
-
-    <script type="text/javascript">
-        Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
-
-        new Vue({
-            el: "#root",
-            data: {
-                name:"laoma",
-                school:{
-                    name:"一中",
-                    url:"https://www.baidu.com"
-                }
-            }
-        })
-    </script>
 </body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+
+    new Vue({
+        el: "#root",
+        data: {
+            name:"laoma",
+            school:{
+                name:"一中",
+                url:"https://www.baidu.com"
+            }
+        }
+    })
+</script>
 </html>

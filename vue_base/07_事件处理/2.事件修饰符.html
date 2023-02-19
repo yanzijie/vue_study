@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>事件修饰符</title>
+	<!-- 引入Vue -->
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<style>
+		* {
+			margin-top: 20px;
+		}
+
+		.demo1 {
+			height: 50px;
+			background-color: skyblue;
+		}
+
+		.box1 {
+			padding: 5px;
+			background-color: skyblue;
+		}
+
+		.box2 {
+			padding: 5px;
+			background-color: orange;
+		}
+
+		.list {
+			width: 200px;
+			height: 200px;
+			background-color: peru;
+			overflow: auto;
+		}
+
+		li {
+			height: 100px;
+		}
+	</style>
+</head>
+
+<body>
+	<!--
+				Vue中的事件修饰符：
+						1.prevent：阻止默认事件（常用）；
+						2.stop：阻止事件冒泡（常用）；
+						事件冒泡：子元素绑定的事件往祖辈元素上冒，比如子元素绑定了A事件，那么父，祖辈元素都会执行这个事件
+						3.once：事件只触发一次（常用）；
+						4.capture：使用事件的捕获模式；
+						5.self：只有event.target是当前操作的元素时才触发事件；
+						6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕；
+		-->
+	<!-- 准备好一个容器-->
+	<div id="root">
+		<h2>欢迎来到{{name}}学习</h2>
+		<!-- 阻止默认事件（常用）这里就是阻止跳转页面 -->
+		<a href="http://www.atguigu.com" @click.prevent="showInfo">点我提示信息</a>
+
+		<!-- 阻止事件冒泡（常用）事件冒泡：点击button执行button的事件，但是上一层div还有事件，还会再执行这个事件 -->
+        <!-- 所以这里的冒泡就是先执行内层button的事件 showInfo ，再执行外层div的事件 showInfo_1 -->
+		<div class="demo1" @click="showInfo_1">
+			<button @click.stop="showInfo">阻止事件冒泡</button>
+			<!-- 修饰符可以连续写 -->
+			<!-- <a href="http://www.atguigu.com" @click.prevent.stop="showInfo">点我提示信息</a> -->
+		</div>
+
+		<!-- 事件只触发一次（常用） -->
+		<button @click.once="showInfo">事件只触发一次</button>
+
+		<!-- 使用事件的捕获模式 -->
+		<div class="box1" @click.capture="showMsg(1)">
+			div1
+			<!-- 点击box2会触发本身的 showMsg(2) 事件，然后触发上层的 showMsg(1) 事件 -->
+            <!-- 如果这里不加事件捕获capture，那就是先执行showMsg(2), 再冒泡执行showMsg(1)-->
+			<!-- 但是上面得click加了capture, 先捕获这个，再冒泡执行事件 -->
+			<!-- 所以这里就先执行showMsg(1), 再执行showMsg(2) -->
+			<div class="box2" @click="showMsg(2)">
+				div2
+			</div>
+		</div>
+
+		<!-- self,只有event.target是当前操作的元素时才触发事件； -->
+		<!-- 当有人调用div，并且事件还得是它本身，才会触发showInfo事件 -->
+		<!-- 比如点button，事件event.target是button，冒泡到了上层的div，但是不会执行上层div的事件, 因为是点击button引起的事件 -->
+		<div class="demo1" @click.self="showInfo">
+			<button @click="showInfo">只有event.target</button>
+		</div>
+
+		<!-- 事件的默认行为立即执行，无需等待事件回调执行完毕； -->
+		<!-- 鼠标滚动条滚动事件:scroll, 鼠标滚轮滚动事件:wheel, 先触发事件demo, 再执行默认行为-滚动 -->
+		<ul @wheel.passive="demo" class="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+
+	</div>
+</body>
+
+<script type="text/javascript">
+	Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+
+	new Vue({
+		el: '#root',
+		data: {
+			name: '齐家屯'
+		},
+		methods: {
+            showInfo_1(){
+                alert('死活是活不了')
+            },
+			showInfo(e) {
+				//这样也可以阻止这个事件的默认行为
+				//e.preventDefault();
+				alert('同学你好！')
+				// console.log(e.target)
+			},
+			showMsg(msg) {
+				console.log(msg)
+			},
+			demo() {
+				console.log("@")
+			}
+		}
+	})
+</script>
+
+</html>
