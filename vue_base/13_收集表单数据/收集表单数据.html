@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>收集表单数据</title>
+	<script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+	<!-- 
+			收集表单数据：
+					若：<input type="text"/>，则v-model收集的是value值，用户输入的就是value值。
+					若：<input type="radio"/>，则v-model收集的是value值，且要给标签配置value值。
+					若：<input type="checkbox"/>
+							1.没有配置input的value属性，那么收集的就是checked（勾选 or 未勾选，是布尔值）
+							2.配置input的value属性:
+									(1)v-model的初始值是非数组，那么收集的就是checked（勾选 or 未勾选，是布尔值）
+									(2)v-model的初始值是数组，那么收集的的就是value组成的数组
+					备注：v-model的三个修饰符：
+									lazy：失去焦点再收集数据
+									number：输入字符串转为有效的数字
+									trim：输入首尾空格过滤
+		-->
+	<!-- 准备好一个容器-->
+	<div id="root">
+<!--		给form绑定提交事件，只要一提交，就调用demo方法-->
+<!--		submit 是表单提交时间  .prevent是阻止默认行为，啥行为？跳转页面呗-->
+		<form @submit.prevent="demo">
+			<!-- 默认收集value数据 -->
+			<!-- v-model.trim : 不收集前后两端的空格 -->
+			账号：<input type="text" v-model.trim="userInfo.account"> <br /><br />
+			密码：<input type="password" v-model="userInfo.password"> <br /><br />
+			<!-- v-model.number: 这个input只收集数字 -->
+			年龄：<input type="number" v-model.number="userInfo.age"> <br /><br />
+			性别：
+			<!-- 不会自动收集 value 需要明示写上value，
+			所以在最后写上 value="xxx", 选择了之后,就等于写了,就会把"xxx"绑定到 userInfo.sex 里面
+			type="radio" : 单选框
+			男女都有 name="sex" : 表示两个是一组的，实现男女只能选一个-->
+			男<input type="radio" name="sex" v-model="userInfo.sex" value="male">
+			女<input type="radio" name="sex" v-model="userInfo.sex" value="female"> <br /><br />
+			爱好：
+			<!-- 不会自动收集 value 需要明示写上value, 同上 -->
+			学习<input type="checkbox" v-model="userInfo.hobby" value="study">
+			打游戏<input type="checkbox" v-model="userInfo.hobby" value="game">
+			吃饭<input type="checkbox" v-model="userInfo.hobby" value="eat">
+			<br /><br />
+			所属校区
+			<!-- 不会自动收集 value 需要明示写上value, 同上 -->
+			<select v-model="userInfo.city">
+				<option value="">请选择校区</option>
+				<option value="beijing">北京</option>
+				<option value="shanghai">上海</option>
+				<option value="shenzhen">深圳</option>
+				<option value="wuhan">武汉</option>
+			</select>
+			<br /><br />
+			其他信息：
+			<!-- 默认收集value数据 -->
+			<!-- v-model.lazy : 输入完成,失去焦点的一瞬间收集 -->
+			<textarea v-model.lazy="userInfo.other"></textarea> <br /><br />
+			勾选框，勾上传给 v-model="userInfo.agree" - true, 不勾 - false
+			<input type="checkbox" v-model="userInfo.agree">阅读并接受<a href="http://www.atguigu.com">《用户协议》</a>
+			<button>提交</button>
+		</form>
+	</div>
+</body>
+
+<script type="text/javascript">
+	Vue.config.productionTip = false
+
+	new Vue({
+		el: '#root',
+		data: {
+			userInfo: {
+				account: '',
+				password: '',
+				age: 18,
+				sex: 'male',	// 先给个默认值，默认值是什么就默认勾选什么,初始值影响v-model的数据
+				hobby: [],
+				city: 'shenzhen',	// 先给个默认值，默认值是什么就默认勾选什么,初始值影响v-model的数据
+				other: '',
+				agree: ''	// 写字符串，勾上勾选框会自动传为 true
+			}
+		},
+		methods: {
+			// 提交表单触发事件
+			demo() {
+				console.log(JSON.stringify(this.userInfo))
+			}
+		}
+	})
+</script>
+
+</html>
