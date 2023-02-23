@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		.demo {
+			background-color: orange;
+		}
+	</style>
+</head>
+
+<body>
+	<button id="btn">点我创建一个输入框</button>
+
+	<script type="text/javascript">
+		const btn = document.getElementById('btn')
+		btn.onclick = () => {
+			//创建一个input节点
+			const input = document.createElement('input')
+
+			input.className = 'demo'
+			input.value = 99
+			input.onclick = () => { alert(1) }
+			// 把这个节点放入DOM
+			document.body.appendChild(input)
+			input.focus()	//input出现时候获取焦点
+			// input.parentElement.style.backgroundColor = 'skyblue'
+			console.log(input.parentElement)
+
+		}
+	</script>
+</body>
+
+</html>
