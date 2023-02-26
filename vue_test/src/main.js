@@ -12,10 +12,4 @@ Vue.config.productionTip = false
 new Vue({
     //render函数完成了这个功能：将App组件放入容器中
   render: h => h(App),
-    // render:q=> q('h1','你好啊')
-
-    // template:`<h1>你好啊</h1>`,
-    // components:{App},
-
-    // 把vm挂载到id=app这个容器，在public/index.html中, 所以渲染的时候其实就是渲染public/index.html
 }).$mount('#app')
