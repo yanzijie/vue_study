@@ -9,6 +9,7 @@
         获取：this.$refs.xxx
     -->
 		<h1 v-text="msg" ref="title"></h1>
+    <!--加了ref="xxx",就可以用this.$refs.xxx 拿到这个标签或者这个组件的实例对象了-->
 		<button ref="btn" @click="showDOM">点我输出上方的DOM元素</button>
 		<School ref="sch"/>
 	</div>
