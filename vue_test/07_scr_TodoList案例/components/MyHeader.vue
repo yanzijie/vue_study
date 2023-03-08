@@ -14,7 +14,7 @@
     props:['addTodo'],
     data() {
       return {
-        // title双向绑定，用于手机input框输入的数据
+        // title双向绑定，用于收集input框输入的数据
         title:''
       }
     },
