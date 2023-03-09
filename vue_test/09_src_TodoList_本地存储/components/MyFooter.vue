@@ -32,7 +32,7 @@
 			},
 			//控制全选框
 			isAll:{
-				//全选框是否勾选
+				//全选框是否勾选, 得到bool值
 				get(){
 					return this.doneTotal === this.total && this.total > 0
 				},

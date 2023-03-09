@@ -9,9 +9,8 @@ Vue.config.productionTip = false
 new Vue({
 	el:'#app',
 	render: h => h(App),
-	/* mounted() {
-		setTimeout(()=>{
-			this.$destroy()
-		},3000)
-	}, */
+	beforeCreate() {
+		// 命名为 $bus 是为了符合vue的设计, $xxx 是给程序员用的
+		Vue.prototype.$bus = this //安装全局事件总线
+	},
 })
