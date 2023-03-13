@@ -20,7 +20,7 @@
 	├── package-lock.json：包版本控制文件
 
 ## 关于不同版本的Vue
-## error:0308010C:digital envelope routines::unsupported报错,解决方案: 
+## error:0308010C:digital envelope routines::unsupported  报错,解决方案: 
 ``
 export NODE_OPTIONS=--openssl-legacy-provider
 ``
