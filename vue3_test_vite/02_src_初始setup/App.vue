@@ -30,6 +30,7 @@ export default {
       a:100
     }
   },
+  // 正常的写法
   methods: {
     sayWelcome(){
       alert('欢迎来到尚硅谷学习')

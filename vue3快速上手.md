@@ -73,7 +73,7 @@ npm run serve
 ```
 
 ## 2.使用 vite 创建
-
+如果装了最新的vue-cli 那么直接运行 npm init vue@latest 就可以安装vite项目了, 这种安装出来完整一点，灵活一点
 官方文档：https://v3.cn.vuejs.org/guide/installation.html#vite
 
 vite官网：https://vitejs.cn
