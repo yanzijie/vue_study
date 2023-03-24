@@ -39,6 +39,7 @@
   // 引入element的图标
   import {Search, ShoppingCart} from '@element-plus/icons-vue'
 
+  // 写了setup，这里就不用export了
   // export default {
   //   name: "Header"
   // }
