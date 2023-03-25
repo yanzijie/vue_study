@@ -8,7 +8,7 @@ import locale from 'element-plus/lib/locale/lang/zh-cn'
 
 // 导入自己的scss文件
 import './assets/my.scss'
-// 导入所有bootstrapjs
+// 导入所有bootstrap js
 import * as bootstrap from 'bootstrap'
 
 const app = createApp(App)
