@@ -38,6 +38,8 @@ export default defineConfig({
         // 配置路径别名
         alias: {
             '@': path.resolve(__dirname, './src'),
+            // 增加~bootstrap
+            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
         },
     },
 });

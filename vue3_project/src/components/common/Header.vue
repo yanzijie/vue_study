@@ -82,7 +82,7 @@
     height: 50px;
   }
   .header-l ul li{
-    margin-right: 79px;
+    margin-right: 50px;
     font-size: 16px;
     font-weight: 500;
     color: #808080;

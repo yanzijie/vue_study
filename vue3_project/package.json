@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "@popperjs/core": "^2.11.7",
+    "bootstrap": "^5.2.3",
     "element-plus": "^2.3.1",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
@@ -16,6 +18,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
     "babel-plugin-component": "^1.1.1",
+    "sass": "^1.60.0",
     "unplugin-auto-import": "^0.15.1",
     "vite": "^4.1.4"
   }
